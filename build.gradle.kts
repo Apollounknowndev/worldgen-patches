@@ -13,6 +13,7 @@ repositories {
 version = "1.0.0"
 group = "dev.worldgen"
 
+// Remember the magic words: `./gradlew remapFabric1214ClientMinecraftIntermediary`
 cloche {
 	metadata {
 		modId = "worldgen_patches"
@@ -23,23 +24,23 @@ cloche {
 		author("Apollo")
 	}
 
-	fabric("fabric:1.20.1") {
-		minecraftVersion = "1.20.1"
-		loaderVersion = "0.16.10"
-
-		runs {
-			client()
-			server()
-		}
+	common {
+		accessWideners.from(file("src/common/main/resources/worldgen_patches.accesswidener"))
 
 		dependencies {
-			fabricApi("0.92.3+1.20.1")
+			compileOnly("org.spongepowered:mixin:0.8.3")
+			compileOnly("io.github.llamalad7:mixinextras-common:0.3.5")
 		}
 	}
 
 	fabric("fabric:1.21.1") {
+		mixins.from(file("src/common/main/resources/worldgen_patches.mixins.json"))
+		accessWideners.from(file("src/common/main/resources/worldgen_patches.accesswidener"))
+
 		minecraftVersion = "1.21.1"
 		loaderVersion = "0.16.10"
+
+		includedClient()
 
 		runs {
 			client()
@@ -47,7 +48,26 @@ cloche {
 		}
 
 		dependencies {
-			fabricApi("0.115.1+1.21.1")
+			fabricApi("0.115.2+1.21.1")
+		}
+	}
+
+	fabric("fabric:1.21.4") {
+		mixins.from(file("src/common/main/worldgen_patches.mixins.json"))
+		accessWideners.from(file("src/common/main/resources/worldgen_patches.accesswidener"))
+
+		minecraftVersion = "1.21.4"
+		loaderVersion = "0.16.10"
+
+		includedClient()
+
+		runs {
+			client()
+			server()
+		}
+
+		dependencies {
+			fabricApi("0.119.0+1.21.4")
 		}
 	}
 }

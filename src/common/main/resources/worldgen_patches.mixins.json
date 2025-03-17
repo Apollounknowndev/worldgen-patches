@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "dev.worldgen.patches.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "SnowAndFreezeFeatureMixin",
+    "SteepMaterialConditionMixin",
+    "TreeFeatureMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
