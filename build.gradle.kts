@@ -25,7 +25,8 @@ cloche {
 	}
 
 	common {
-		accessWideners.from(file("src/common/main/resources/worldgen_patches.accesswidener"))
+		mixins.from(file("src/common/main/worldgen_patches.mixins.json"))
+		accessWideners.from(file("src/common/main/worldgen_patches.accesswidener"))
 
 		dependencies {
 			compileOnly("org.spongepowered:mixin:0.8.3")
@@ -34,8 +35,8 @@ cloche {
 	}
 
 	fabric("fabric:1.21.1") {
-		mixins.from(file("src/common/main/resources/worldgen_patches.mixins.json"))
-		accessWideners.from(file("src/common/main/resources/worldgen_patches.accesswidener"))
+		mixins.from(file("src/common/main/worldgen_patches.mixins.json"))
+		accessWideners.from(file("src/common/main/worldgen_patches.accesswidener"))
 
 		minecraftVersion = "1.21.1"
 		loaderVersion = "0.16.10"
@@ -54,7 +55,7 @@ cloche {
 
 	fabric("fabric:1.21.4") {
 		mixins.from(file("src/common/main/worldgen_patches.mixins.json"))
-		accessWideners.from(file("src/common/main/resources/worldgen_patches.accesswidener"))
+		accessWideners.from(file("src/common/main/worldgen_patches.accesswidener"))
 
 		minecraftVersion = "1.21.4"
 		loaderVersion = "0.16.10"
@@ -68,6 +69,32 @@ cloche {
 
 		dependencies {
 			fabricApi("0.119.0+1.21.4")
+		}
+	}
+
+	neoforge("neoforge:1.21.1") {
+		mixins.from(file("src/common/main/worldgen_patches.mixins.json"))
+		accessWideners.from(file("src/common/main/worldgen_patches.accesswidener"))
+
+		minecraftVersion = "1.21.1"
+		loaderVersion = "21.1.133"
+
+		runs {
+			client()
+			server()
+		}
+	}
+
+	neoforge("neoforge:1.21.4") {
+		mixins.from(file("src/common/main/worldgen_patches.mixins.json"))
+		accessWideners.from(file("src/common/main/worldgen_patches.accesswidener"))
+
+		minecraftVersion = "1.21.4"
+		loaderVersion = "21.4.114-beta"
+
+		runs {
+			client()
+			server()
 		}
 	}
 }
