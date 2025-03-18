@@ -17,8 +17,9 @@ group = "dev.worldgen"
 cloche {
 	metadata {
 		modId = "worldgen_patches"
+		icon = "pack.png"
 		name = "Worldgen Patches"
-		description = "Fixes several small issues in worldgen."
+		description = "Fixes a few small issues in worldgen."
 		license = "MIT"
 
 		author("Apollo")
